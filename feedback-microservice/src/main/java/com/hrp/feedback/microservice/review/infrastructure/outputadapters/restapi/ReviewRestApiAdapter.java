@@ -61,7 +61,7 @@ public class ReviewRestApiAdapter implements CheckHotelExistsOutputPort, CheckRe
     @Override
     public boolean exists(String restaurantId) {
         RestClient restClient = RestClient.create();
-        String url = URL_HOTELS + "existing-restaurant?restaurantid="+restaurantId;
+        String url = URL_RESTAURANTS + "existing-restaurant?restaurantid="+restaurantId;
         try {
             restClient.head()
                     .uri(url)

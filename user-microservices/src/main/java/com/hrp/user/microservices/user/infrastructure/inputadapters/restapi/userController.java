@@ -6,6 +6,7 @@ import com.hrp.user.microservices.user.application.createemployee.CreateEmployee
 import com.hrp.user.microservices.user.infrastructure.inputports.CreateClientInputPort;
 import com.hrp.user.microservices.user.infrastructure.inputports.CreateEmployeeInputPort;
 import com.hrp.user.microservices.user.infrastructure.inputports.FindClientInputPort;
+import com.hrp.user.microservices.user.infrastructure.inputports.FindEmployeeInputPort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,12 +18,14 @@ public class userController {
     private final CreateClientInputPort createClientInputPort;
     private final CreateEmployeeInputPort createEmployeeInputPort;
     private final FindClientInputPort findClientInputPort;
+    private final FindEmployeeInputPort findEmployeeInputPort;
 
     @Autowired
-    public userController(CreateClientInputPort createUserInputPort, CreateEmployeeInputPort createEmployeeInputPort, FindClientInputPort findClientInputPort) {
+    public userController(CreateClientInputPort createUserInputPort, CreateEmployeeInputPort createEmployeeInputPort, FindClientInputPort findClientInputPort, FindEmployeeInputPort findEmployeeInputPort) {
         this.createClientInputPort = createUserInputPort;
         this.createEmployeeInputPort = createEmployeeInputPort;
         this.findClientInputPort = findClientInputPort;
+        this.findEmployeeInputPort = findEmployeeInputPort;
     }
 
     @PostMapping("create/client")
@@ -42,6 +45,14 @@ public class userController {
     @RequestMapping(method = RequestMethod.HEAD, path = "/exists/client")
     public ResponseEntity<Void> checkClientExists(@RequestParam("username") String username) {
         if(findClientInputPort.findClientByUsername(username).isPresent()){
+            return ResponseEntity.status(HttpStatus.OK).build();
+        }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    }
+
+    @RequestMapping(method = RequestMethod.HEAD, path = "/exists/employee")
+    public ResponseEntity<Void> checkEmployeeExists(@RequestParam("username") String username) {
+        if(findEmployeeInputPort.findEmployee(username).isPresent()){
             return ResponseEntity.status(HttpStatus.OK).build();
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND).build();

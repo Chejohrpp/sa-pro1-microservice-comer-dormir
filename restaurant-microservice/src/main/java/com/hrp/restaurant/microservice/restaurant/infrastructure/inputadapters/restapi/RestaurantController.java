@@ -18,14 +18,16 @@ public class RestaurantController {
     private final FindPriceDishInputPort findPriceDishInputPort;
     private final CreateMenuInputPort createMenuInputPort;
     private final FindMenuInputPort findMenuInputPort;
+    private final FindRestaurantInputPort findRestaurantInputPort;
 
     @Autowired
-    public RestaurantController(CreateRestaurantInputPort createRestaurantInputPort, CreateDishInputPort createDishInputPort, FindPriceDishInputPort findPriceDishInputPort, CreateMenuInputPort createMenuInputPort, FindMenuInputPort findMenuInputPort) {
+    public RestaurantController(CreateRestaurantInputPort createRestaurantInputPort, CreateDishInputPort createDishInputPort, FindPriceDishInputPort findPriceDishInputPort, CreateMenuInputPort createMenuInputPort, FindMenuInputPort findMenuInputPort, FindRestaurantInputPort findRestaurantInputPort) {
         this.createRestaurantInputPort = createRestaurantInputPort;
         this.createDishInputPort = createDishInputPort;
         this.findPriceDishInputPort = findPriceDishInputPort;
         this.createMenuInputPort = createMenuInputPort;
         this.findMenuInputPort = findMenuInputPort;
+        this.findRestaurantInputPort = findRestaurantInputPort;
     }
 
     @PostMapping("/create")
@@ -60,6 +62,14 @@ public class RestaurantController {
     public ResponseEntity<Void> existsMenu(@RequestParam("restaurantid") String restaurantId,
                                            @RequestParam("dishid") Long dishid) throws Exception {
         if(findMenuInputPort.findMenuByName(restaurantId, dishid).isPresent()){
+            return ResponseEntity.status(HttpStatus.OK).build();
+        }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    }
+
+    @RequestMapping(method = RequestMethod.HEAD, path = "/existing-restaurant")
+    public ResponseEntity<Void> existsRestaurant(@RequestParam("restaurantid") String restaurantId) throws Exception {
+        if(findRestaurantInputPort.findRestaurant(restaurantId).isPresent()){
             return ResponseEntity.status(HttpStatus.OK).build();
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
