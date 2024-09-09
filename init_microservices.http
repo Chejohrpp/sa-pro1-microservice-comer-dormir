@@ -1,0 +1,335 @@
+### Crear cliente 1
+POST http://localhost:8081/v1/users/create/client
+Content-Type: application/json
+
+{
+  "createUserRequest": {
+    "username": "client1",
+    "password": "password1",
+    "email": "client1@example.com",
+    "firstName": "First1",
+    "lastName": "Last1"
+  },
+  "phoneNumber": "1234567891",
+  "address": "Address1"
+}
+
+### Crear cliente 2
+POST http://localhost:8081/v1/users/create/client
+Content-Type: application/json
+
+{
+  "createUserRequest": {
+    "username": "client2",
+    "password": "password2",
+    "email": "client2@example.com",
+    "firstName": "First2",
+    "lastName": "Last2"
+  },
+  "phoneNumber": "1234567892",
+  "address": "Address2"
+}
+
+### Crear cliente 3
+POST http://localhost:8081/v1/users/create/client
+Content-Type: application/json
+
+{
+  "createUserRequest": {
+    "username": "client3",
+    "password": "password3",
+    "email": "client3@example.com",
+    "firstName": "First3",
+    "lastName": "Last3"
+  },
+  "phoneNumber": "1234567893",
+  "address": "Address3"
+}
+
+### Crear cliente 4
+POST http://localhost:8081/v1/users/create/client
+Content-Type: application/json
+
+{
+  "createUserRequest": {
+    "username": "client4",
+    "password": "password4",
+    "email": "client4@example.com",
+    "firstName": "First4",
+    "lastName": "Last4"
+  },
+  "phoneNumber": "1234567894",
+  "address": "Address4"
+}
+
+### Crear cliente 5
+POST http://localhost:8081/v1/users/create/client
+Content-Type: application/json
+
+{
+  "createUserRequest": {
+    "username": "client5",
+    "password": "password5",
+    "email": "client5@example.com",
+    "firstName": "First5",
+    "lastName": "Last5"
+  },
+  "phoneNumber": "1234567895",
+  "address": "Address5"
+}
+
+### Crear empleado 1 (Manager)
+POST http://localhost:8081/v1/users/create/employee
+Content-Type: application/json
+
+{
+  "createUserRequest": {
+    "username": "goku",
+    "password": "kamehameha123",
+    "email": "goku@dbz.com",
+    "firstName": "Son",
+    "lastName": "Goku"
+  },
+  "salary": 3500,
+  "hireDate": "2024-09-09",
+  "role": "MANAGER"
+}
+
+### Crear empleado 2 (Employee)
+POST http://localhost:8081/v1/users/create/employee
+Content-Type: application/json
+
+{
+  "createUserRequest": {
+    "username": "naruto",
+    "password": "rasengan789",
+    "email": "naruto@konoha.com",
+    "firstName": "Naruto",
+    "lastName": "Uzumaki"
+  },
+  "salary": 2500,
+  "hireDate": "2024-09-09",
+  "role": "EMPLOYEE"
+}
+
+### Crear empleado 3 (Manager)
+POST http://localhost:8081/v1/users/create/employee
+Content-Type: application/json
+
+{
+  "createUserRequest": {
+    "username": "luffy",
+    "password": "gomu123",
+    "email": "luffy@onepiece.com",
+    "firstName": "Monkey",
+    "lastName": "D. Luffy"
+  },
+  "salary": 4000,
+  "hireDate": "2024-09-09",
+  "role": "MANAGER"
+}
+
+### Crear empleado 4 (Employee)
+POST http://localhost:8081/v1/users/create/employee
+Content-Type: application/json
+
+{
+  "createUserRequest": {
+    "username": "vegeta",
+    "password": "finalflash321",
+    "email": "vegeta@dbz.com",
+    "firstName": "Prince",
+    "lastName": "Vegeta"
+  },
+  "salary": 3200,
+  "hireDate": "2024-09-09",
+  "role": "EMPLOYEE"
+}
+
+### Crear empleado 5 (Manager)
+POST http://localhost:8081/v1/users/create/employee
+Content-Type: application/json
+
+{
+  "createUserRequest": {
+    "username": "ichigo",
+    "password": "bankai987",
+    "email": "ichigo@bleach.com",
+    "firstName": "Ichigo",
+    "lastName": "Kurosaki"
+  },
+  "salary": 3600,
+  "hireDate": "2024-09-09",
+  "role": "MANAGER"
+}
+
+### Crear Hotel 1: "Elysium Resort"
+POST http://localhost:8082/v1/hotels
+Content-Type: application/json
+
+{
+  "name": "Elysium Resort",
+  "address": "Luxury Avenue 101"
+}
+
+### Crear Habitaciones en Elysium Resort
+POST http://localhost:8082/v1/hotels/1/rooms/create
+Content-Type: application/json
+
+{
+  "name": "SP",
+  "type": "SUITE",
+  "price": 1500
+}
+
+###
+
+POST http://localhost:8082/v1/hotels/1/rooms/create
+Content-Type: application/json
+
+{
+"name": "OV",
+"type": "NORMAL",
+"price": 800
+}
+
+### Crear Hotel 2: "Aurora Towers"
+POST http://localhost:8082/v1/hotels
+Content-Type: application/json
+
+{
+  "name": "Aurora Towers",
+  "address": "Downtown Skyline 200"
+}
+
+### Crear Habitaciones en Aurora Towers
+POST http://localhost:8082/v1/hotels/2/rooms/create
+Content-Type: application/json
+
+{
+  "name": "Diamond Suite",
+  "type": "SUITE",
+  "price": 1800
+}
+
+###
+
+POST http://localhost:8082/v1/hotels/2/rooms/create
+Content-Type: application/json
+
+{
+"name": "Executive Room",
+"type": "NORMAL",
+"price": 700
+}
+
+### Crear Hotel 3: "Celestial Palms"
+POST http://localhost:8082/v1/hotels
+Content-Type: application/json
+
+{
+  "name": "Celestial Palms",
+  "address": "Paradise Island 303"
+}
+
+### Crear Habitaciones en Celestial Palms
+POST http://localhost:8082/v1/hotels/3/rooms/create
+Content-Type: application/json
+
+{
+  "name": "infinity",
+  "type": "SUITE",
+  "price": 2000
+}
+
+###
+
+POST http://localhost:8082/v1/hotels/3/rooms/create
+Content-Type: application/json
+
+{
+"name": "Garden View Room",
+"type": "NORMAL",
+"price": 750
+}
+
+### Crear Restaurante 1: Le Gourmet
+POST http://localhost:8084/v1/restaurants/create
+Content-Type: application/json
+
+{
+  "name": "Le Gourmet",
+  "address": "1234 Rue de Paris, France"
+}
+
+### Crear Platillo 1 para Restaurante 1
+POST http://localhost:8084/v1/restaurants/dish/create
+Content-Type: application/json
+
+{
+  "name": "Foie Gras",
+  "price": 45.99
+}
+
+### Crear Platillo 2 para Restaurante 1
+POST http://localhost:8084/v1/restaurants/dish/create
+Content-Type: application/json
+
+{
+  "name": "Coq au Vin",
+  "price": 38.50
+}
+
+### Crear Restaurante 2: Sushi Heaven
+POST http://localhost:8084/v1/restaurants/create
+Content-Type: application/json
+
+{
+  "name": "Sushi Heaven",
+  "address": "456 Tokyo Street, Japan"
+}
+
+### Crear Platillo 1 para Restaurante 2
+POST http://localhost:8084/v1/restaurants/dish/create
+Content-Type: application/json
+
+{
+  "name": "Sashimi Deluxe",
+  "price": 60.00
+}
+
+### Crear Platillo 2 para Restaurante 2
+POST http://localhost:8084/v1/restaurants/dish/create
+Content-Type: application/json
+
+{
+  "name": "Wagyu Beef Roll",
+  "price": 85.75
+}
+
+### Crear Restaurante 3: The Italian Experience
+POST http://localhost:8084/v1/restaurants/create
+Content-Type: application/json
+
+{
+  "name": "The Italian Experience",
+  "address": "789 Via Roma, Italy"
+}
+
+### Crear Platillo 1 para Restaurante 3
+POST http://localhost:8084/v1/restaurants/dish/create
+Content-Type: application/json
+
+{
+  "name": "Truffle Risotto",
+  "price": 55.40
+}
+
+### Crear Platillo 2 para Restaurante 3
+POST http://localhost:8084/v1/restaurants/dish/create
+Content-Type: application/json
+
+{
+  "name": "Osso Buco",
+  "price": 48.25
+}

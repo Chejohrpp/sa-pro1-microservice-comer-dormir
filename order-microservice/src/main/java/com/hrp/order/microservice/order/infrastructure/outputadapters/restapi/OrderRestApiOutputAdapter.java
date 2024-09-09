@@ -12,8 +12,10 @@ import org.springframework.web.client.RestClientResponseException;
 
 @Component
 public class OrderRestApiOutputAdapter implements CheckMenuDishRestaurantOutputPort, CheckUsernameExistsOutputPort, GetDishPriceOutputPort {
-    private static final String URL_RESTAURANT = "http://localhost:8084/v1/restaurants/";
-    private static final String URL_USERS = "http://localhost:8081/v1/users/";
+//    private static final String URL_RESTAURANT = "http://localhost:8084/v1/restaurants/";
+//    private static final String URL_USERS = "http://localhost:8081/v1/users/";
+    private static final String URL_RESTAURANT = "http://restaurant-microservice:8080/v1/restaurants/";
+    private static final String URL_USERS = "http://user-microservice:8080/v1/users/";
 
     @Override
     public boolean existsDishInRestaurant(String restaurantId, Long dishId) {

@@ -18,8 +18,13 @@ import java.util.List;
 
 @Component
 public class ReportsRestAPIOuputAdatepter implements GetUsernamesEmployeeByEstablishmentOutputPort, GetDescriptonsEmployeeByUsernameOutputPort {
+    /*
     private static final String URL_PAYROLLS = "http://localhost:8089/v1/payrolls/";
     private static final String URL_USERS = "http://localhost:8081/v1/users/";
+
+     */
+    private static final String URL_PAYROLLS = "http://payroll-microservice:8080/v1/payrolls/";
+    private static final String URL_USERS = "http://user-microservice:8080/v1/users/";
 
 
     @Override

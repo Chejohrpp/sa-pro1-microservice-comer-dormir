@@ -13,9 +13,13 @@ import org.springframework.web.client.RestClientResponseException;
 
 @Component
 public class PayrollRestApiOutputAdapter implements CheckHotelExistsOutputPort, CheckEmployeeExistsOutputPort, CheckRestaurantExistsOutputPort, GetSalaryEmployeeOutputPort {
-    private static final String URL_RESTAURANTS = "http://localhost:8084/v1/restaurants/";
-    private static final String URL_HOTELS = "http://localhost:8082/v1/hotels/";
-    private static final String URL_USERS = "http://localhost:8081/v1/users/";
+//    private static final String URL_RESTAURANTS = "http://localhost:8084/v1/restaurants/";
+//    private static final String URL_HOTELS = "http://localhost:8082/v1/hotels/";
+//    private static final String URL_USERS = "http://localhost:8081/v1/users/";
+
+    private static final String URL_RESTAURANTS = "http://restaurant-microservice:8080/v1/restaurants/";
+    private static final String URL_HOTELS = "http://hotel-microservice:8080/v1/hotels/";
+    private static final String URL_USERS = "http://user-microservice:8080/v1/users/";
 
     @Override
     public boolean checkEmployeeExists(String username) {
