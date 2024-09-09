@@ -3,10 +3,7 @@ package com.hrp.user.microservices.user.infrastructure.inputadapters.restapi;
 import com.hrp.user.microservices.common.exceptions.AlreadyExistsException;
 import com.hrp.user.microservices.user.application.createclient.CreateClientRequest;
 import com.hrp.user.microservices.user.application.createemployee.CreateEmployeeRequest;
-import com.hrp.user.microservices.user.infrastructure.inputports.CreateClientInputPort;
-import com.hrp.user.microservices.user.infrastructure.inputports.CreateEmployeeInputPort;
-import com.hrp.user.microservices.user.infrastructure.inputports.FindClientInputPort;
-import com.hrp.user.microservices.user.infrastructure.inputports.FindEmployeeInputPort;
+import com.hrp.user.microservices.user.infrastructure.inputports.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,13 +16,15 @@ public class userController {
     private final CreateEmployeeInputPort createEmployeeInputPort;
     private final FindClientInputPort findClientInputPort;
     private final FindEmployeeInputPort findEmployeeInputPort;
+    private final GetSalaryEmployeeInuputPort getSalaryEmployeeInuputPort;
 
     @Autowired
-    public userController(CreateClientInputPort createUserInputPort, CreateEmployeeInputPort createEmployeeInputPort, FindClientInputPort findClientInputPort, FindEmployeeInputPort findEmployeeInputPort) {
+    public userController(CreateClientInputPort createUserInputPort, CreateEmployeeInputPort createEmployeeInputPort, FindClientInputPort findClientInputPort, FindEmployeeInputPort findEmployeeInputPort, GetSalaryEmployeeInuputPort getSalaryEmployeeInuputPort) {
         this.createClientInputPort = createUserInputPort;
         this.createEmployeeInputPort = createEmployeeInputPort;
         this.findClientInputPort = findClientInputPort;
         this.findEmployeeInputPort = findEmployeeInputPort;
+        this.getSalaryEmployeeInuputPort = getSalaryEmployeeInuputPort;
     }
 
     @PostMapping("create/client")
@@ -56,5 +55,11 @@ public class userController {
             return ResponseEntity.status(HttpStatus.OK).build();
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    }
+
+    @GetMapping("/employee/{username}/salary")
+    public ResponseEntity<Double> getSalaryEmployee(@PathVariable String username) {
+        double salary = getSalaryEmployeeInuputPort.getSalaryEmployeeInuput(username);
+        return ResponseEntity.status(HttpStatus.OK).body(salary);
     }
 }
