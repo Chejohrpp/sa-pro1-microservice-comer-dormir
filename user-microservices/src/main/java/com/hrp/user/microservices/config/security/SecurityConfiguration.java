@@ -43,6 +43,7 @@ public class SecurityConfiguration {
                         .requestMatchers(HttpMethod.POST, "/v1/users/create/employee").permitAll()
                         .requestMatchers(HttpMethod.HEAD, "/v1/users/exists/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/v1/users/employee/**").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/v1/users/reports/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/v1/users/auth/login", "/v1/users/auth/logout").permitAll()
                         .anyRequest().authenticated())
                 .authenticationProvider(authenticationProvider())

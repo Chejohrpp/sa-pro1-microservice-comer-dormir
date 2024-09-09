@@ -3,11 +3,16 @@ package com.hrp.user.microservices.user.infrastructure.inputadapters.restapi;
 import com.hrp.user.microservices.common.exceptions.AlreadyExistsException;
 import com.hrp.user.microservices.user.application.createclient.CreateClientRequest;
 import com.hrp.user.microservices.user.application.createemployee.CreateEmployeeRequest;
+import com.hrp.user.microservices.user.application.getemployeesdescriptionslist.GetEmployeeDescriptionLisRequest;
+import com.hrp.user.microservices.user.infrastructure.inputadapters.restapi.reports.GetEmployeeDescriptionResponse;
 import com.hrp.user.microservices.user.infrastructure.inputports.*;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("v1/users/")
@@ -17,14 +22,16 @@ public class userController {
     private final FindClientInputPort findClientInputPort;
     private final FindEmployeeInputPort findEmployeeInputPort;
     private final GetSalaryEmployeeInuputPort getSalaryEmployeeInuputPort;
+    private final GetListEmployeesDescriptionInputPort getListEmployeesDescriptionInputPort;
 
     @Autowired
-    public userController(CreateClientInputPort createUserInputPort, CreateEmployeeInputPort createEmployeeInputPort, FindClientInputPort findClientInputPort, FindEmployeeInputPort findEmployeeInputPort, GetSalaryEmployeeInuputPort getSalaryEmployeeInuputPort) {
+    public userController(CreateClientInputPort createUserInputPort, CreateEmployeeInputPort createEmployeeInputPort, FindClientInputPort findClientInputPort, FindEmployeeInputPort findEmployeeInputPort, GetSalaryEmployeeInuputPort getSalaryEmployeeInuputPort, GetListEmployeesDescriptionInputPort getListEmployeesDescriptionInputPort) {
         this.createClientInputPort = createUserInputPort;
         this.createEmployeeInputPort = createEmployeeInputPort;
         this.findClientInputPort = findClientInputPort;
         this.findEmployeeInputPort = findEmployeeInputPort;
         this.getSalaryEmployeeInuputPort = getSalaryEmployeeInuputPort;
+        this.getListEmployeesDescriptionInputPort = getListEmployeesDescriptionInputPort;
     }
 
     @PostMapping("create/client")
@@ -61,5 +68,13 @@ public class userController {
     public ResponseEntity<Double> getSalaryEmployee(@PathVariable String username) {
         double salary = getSalaryEmployeeInuputPort.getSalaryEmployeeInuput(username);
         return ResponseEntity.status(HttpStatus.OK).body(salary);
+    }
+
+    @PostMapping("/reports/get-description-employees-list")
+    public ResponseEntity<List<GetEmployeeDescriptionResponse>> getEmployeeDescription(
+            @RequestBody GetEmployeeDescriptionLisRequest getEmployeeDescriptionLisRequest
+            ) throws EntityNotFoundException {
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(getListEmployeesDescriptionInputPort.getListEmployeesDescription(getEmployeeDescriptionLisRequest));
     }
 }
