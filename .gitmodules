@@ -1,0 +1,7 @@
+[submodule "reservation-microservices"]
+  path = reservation-microservices
+  url = https://github.com/Chejohrpp/sa-pro1-microservice-comer-dormir-reservation
+
+[submodule "hotel-microservice"]
+  path = hotel-microservice
+  url = https://github.com/Chejohrpp/sa-pro1-microservice-comer-dormir-hotel
